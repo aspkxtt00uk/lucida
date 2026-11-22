@@ -412,6 +412,18 @@
     if (!img) emptyCard.hidden = false;
     renderLib();
   }
+  /* Open a template straight from a link: index.html?ref=bouquet/templates/x.png&name=… (same-site images only) */
+  async function loadFromLink() {
+    const q = new URLSearchParams(location.search), ref = q.get('ref');
+    if (!ref) return;
+    history.replaceState(null, '', location.pathname);
+    if (!/^[\w\-./]+\.(png|jpe?g|webp)$/i.test(ref) || ref.includes('..') || ref.startsWith('/')) return toast('That template link isn’t valid');
+    try {
+      const r = await fetch(ref); if (!r.ok) throw new Error(r.status);
+      const name = (q.get('name') || ref.split('/').pop().replace(/\.[^.]+$/, '')).slice(0, 80);
+      if (await loadBlob(await r.blob(), { name })) toast('Template loaded — line it up and trace');
+    } catch (e) { toast('Couldn’t load that template'); }
+  }
 
   /* ================= camera ================= */
   const Cam = { stream: null, track: null, devices: [], kind: null, starting: false, endedRetries: 0 };
@@ -884,7 +896,7 @@
 
   /* ================= boot ================= */
   bindUI(); syncUI();
-  restoreCurrent();
+  restoreCurrent().then(loadFromLink);
   startCamera();
   registerSW();
   window.__lucida = { S, paint, get img() { return img; }, Cam, renderGuide, regionAt, screenToImage }; // for debugging/tests
