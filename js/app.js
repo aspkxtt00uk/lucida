@@ -17,7 +17,7 @@
     locked: false, wake: true,
     tf: { x: 0, y: 0, s: 1, r: 0, f: 1 },
     cameraId: null, cameraLabel: null, zoom: {},
-    medium: 'cp-wax', setByMedium: {}, excluded: {}, customColours: [], detail: 'balanced',
+    medium: 'cp', setByMedium: {}, excluded: {}, customColours: [], detail: 'balanced',
     view: 'layer', lastGuideView: 'layer', guideOpacity: 85, numbers: true, progress: {},
   };
   const S = (() => {

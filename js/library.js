@@ -6,6 +6,15 @@
   const P5 = (a) => a; // readability helper for pressure arrays
 
   const MEDIA = {
+    'cp': {
+      name: 'Coloured pencils', short: 'Coloured pencils', family: 'pencil', opaque: false, reserve: true, opacity: 0.7, unit: 'Pressure',
+      pressure: P5(['Very light', 'Light', 'Medium', 'Firm', 'Heavy / burnish']),
+      strokes: { under: 'Light, tiny circles with a sharp point', base: 'Small overlapping circles — no visible lines', mid: 'Directional strokes that follow the form', shadow: 'Cross-hatch, then small circles to fill the tooth', refine: 'Fine point details with a freshly sharpened pencil', texture: 'Short broken strokes to suggest texture', reserve: 'Leave untouched' },
+      blend: { early: 'Keep layers light and preserve the paper tooth', mid: 'Blend lightly only where edges are soft', late: 'Burnish with white or a colourless blender to finish' },
+      highlight: 'Leave the paper bare — coloured pencil is hard to erase, so plan highlights before you start.',
+      tips: ['Most coloured pencils are wax-based: if you know yours are oil-based (e.g. Polychromos) or watercolour, pick that option for more specific advice.', 'Build colour in several light layers rather than one heavy one.'],
+      sets: ['generic-pencil-48', 'generic-pencil-24', 'prismacolor-premier', 'polychromos', 'custom'],
+    },
     'cp-wax': {
       name: 'Coloured pencils · wax', short: 'Wax pencils', family: 'pencil', opaque: false, reserve: true, opacity: 0.74, unit: 'Pressure',
       pressure: P5(['Very light', 'Light', 'Medium', 'Firm', 'Heavy / burnish']),

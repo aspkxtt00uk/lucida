@@ -138,7 +138,7 @@
 
   /* ---------- main entry ---------- */
   function build(A, opts) {
-    const med = LIB.MEDIA[opts.medium] || LIB.MEDIA['cp-wax'];
+    const med = LIB.MEDIA[opts.medium] || LIB.MEDIA['cp'];
     // transparent paint: lighten with water, never white paint
     const colours = prepColours((opts.colours || []).filter((c) => !(med.family === 'paint' && !med.opaque && /white/i.test(c.name))));
     const match = makeMatcher(colours, med);
